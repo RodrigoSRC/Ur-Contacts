@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const StyledContainer = styled.main`
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
 
     gap: 20px;
 
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
 
     background-color: var(--grey-4);
@@ -18,10 +19,14 @@ export const StyledContainer = styled.main`
         align-items: center;
 
         gap: 1.875rem;
+        
+        max-width: 90rem;
 
-        width: 90rem;
+        width: 100%;
 
         margin: 0 auto;
+
+        padding: 1rem;
     }
 
     .navBar{
@@ -48,9 +53,6 @@ export const StyledContainer = styled.main`
     }
 
     .headerSection{
-        display: flex;
-        justify-content: center;
-
         width: 100vw;
         border-bottom: 1px solid var(--grey-1);
         border-top: 1px solid var(--grey-1);
@@ -62,7 +64,10 @@ export const StyledContainer = styled.main`
         align-items: center;
 
         height: 110px;
-        width: 90rem;
+        max-width: 90rem;
+        width: 100%;
+        padding: 1rem;
+        margin: 0 auto;
     }
 
     header > p {
@@ -94,10 +99,15 @@ export const StyledContainer = styled.main`
         justify-content: space-between;
     }
 
-    ul {
-        margin-top: 30px;
-        color: white;        
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(clamp(0px, 100%, 300px), 1fr));
+    div section span {
+        color: var(--color-primary);
     }
+
+    ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+    color: white;
+}
 `
