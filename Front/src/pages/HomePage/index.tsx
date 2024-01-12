@@ -65,7 +65,7 @@ export const HomePage = () => {
       };
 
 
-    const renderContacts = (contactsToRender: Contact[]) => contactsToRender.map(contact => <Card key={contact.id} contact={contact} setContacts={setContacts} 
+    const renderContacts = (contactsToRender: Contact[]) => contactsToRender.map(contact => <Card key={contact.id} contact={contact} 
         editContact={() => handleEditContact(contact)} removeContact={() => handleRemoveContact(contact)
         }/>)
 
