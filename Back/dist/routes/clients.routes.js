@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.clientsRoutes = void 0;
+const express_1 = require("express");
+const controllers_1 = require("../controllers");
+const ensureDataIsValid_middleware_1 = require("../middlewares/ensureDataIsValid.middleware");
+const clients_schemas_1 = require("../schemas/clients.schemas");
+const clientsRoutes = (0, express_1.Router)();
+exports.clientsRoutes = clientsRoutes;
+clientsRoutes.post("", (0, ensureDataIsValid_middleware_1.ensureDataIsValidMiddleware)(clients_schemas_1.clientSchemaRequest), (req, res) => controllers_1.clientsController.create(req, res));
+clientsRoutes.get("/:id", (req, res) => controllers_1.clientsController.list(req, res));
+clientsRoutes.patch("/:id", (0, ensureDataIsValid_middleware_1.ensureDataIsValidMiddleware)(clients_schemas_1.clientSchemaRequest), (req, res) => controllers_1.clientsController.update(req, res));
+clientsRoutes.delete("/:id", (req, res) => { controllers_1.clientsController.remove(req, res); });

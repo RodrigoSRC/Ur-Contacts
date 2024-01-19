@@ -1,0 +1,16 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.contactsRoutes = void 0;
+const express_1 = require("express");
+const ensureDataIsValid_middleware_1 = require("../middlewares/ensureDataIsValid.middleware");
+const contacts_schemas_1 = require("../schemas/contacts.schemas");
+const controllers_1 = require("../controllers");
+const ensureAuth_middleware_1 = require("../middlewares/ensureAuth.middleware");
+const ensureIsOwner_middleware_1 = require("../middlewares/ensureIsOwner.middleware");
+const contactsRoutes = (0, express_1.Router)();
+exports.contactsRoutes = contactsRoutes;
+contactsRoutes.use(ensureAuth_middleware_1.ensureAuthMiddleware);
+contactsRoutes.post("", (0, ensureDataIsValid_middleware_1.ensureDataIsValidMiddleware)(contacts_schemas_1.contactSchemaRequest), (req, res) => controllers_1.contactController.create(req, res));
+contactsRoutes.get("", (req, res) => controllers_1.contactController.list(req, res));
+contactsRoutes.patch("/:id", ensureIsOwner_middleware_1.EnsureIsOwnerMiddleware, (0, ensureDataIsValid_middleware_1.ensureDataIsValidMiddleware)(contacts_schemas_1.contactSchemaUpdate), (req, res) => controllers_1.contactController.update(req, res));
+contactsRoutes.delete("/:id", ensureIsOwner_middleware_1.EnsureIsOwnerMiddleware, (req, res) => controllers_1.contactController.remove(req, res));

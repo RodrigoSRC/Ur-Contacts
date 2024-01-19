@@ -11,6 +11,15 @@ const dataSourceConfig = (): DataSourceOptions => {
 
   const nodeEnv: string | undefined = process.env.NODE_ENV
 
+  if (nodeEnv === "production") {
+    return {
+      type: "postgres",
+      url: databaseUrl,
+      entities: [entitiesPath],
+      migrations: [migrationsPath],
+    };
+  }
+
   if(nodeEnv === 'test'){
     return{
         type: 'sqlite',

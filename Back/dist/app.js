@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.app = void 0;
+require("express-async-errors");
+const express_1 = __importDefault(require("express"));
+const handleAppError_middleware_1 = require("./middlewares/handleAppError.middleware");
+const clients_routes_1 = require("./routes/clients.routes");
+const contacts_routes_1 = require("./routes/contacts.routes");
+const session_routes_1 = require("./routes/session.routes");
+exports.app = (0, express_1.default)();
+const cors = require('cors');
+exports.app.use(cors());
+exports.app.use(express_1.default.json());
+exports.app.use('/clients', clients_routes_1.clientsRoutes);
+exports.app.use('/contacts', contacts_routes_1.contactsRoutes);
+exports.app.use('/login', session_routes_1.sessionRouter);
+exports.app.use(handleAppError_middleware_1.handleAppErrorMiddleware);
+exports.default = exports.app;

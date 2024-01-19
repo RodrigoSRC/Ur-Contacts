@@ -17,3 +17,4 @@ export const StyledButton = styled.button<StyledButtonProps>`
     background-color: var(--color-primary-focus);
   }
 `;
+
