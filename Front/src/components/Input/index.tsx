@@ -1,16 +1,10 @@
-import { forwardRef, HTMLProps} from "react"
+import { forwardRef} from "react"
 import { StyledParagraph } from "../../styles/typography"
 import { Container }from "./style";
-
-interface InputProps extends HTMLProps<HTMLInputElement> {
-    error?: { message: string } | undefined;
-    type: string;
-    placeholder: string;
-    title: string;
-  }
+import { IInputProps } from "./@types";
 
 
-export const Input = forwardRef<HTMLInputElement, InputProps>(({error, title, ...rest}, ref) => {
+export const Input = forwardRef<HTMLInputElement, IInputProps>(({error, title, ...rest}, ref) => {
     return(
         <Container>
             <StyledParagraph 

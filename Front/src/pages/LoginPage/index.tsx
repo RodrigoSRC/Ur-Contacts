@@ -1,4 +1,3 @@
-
 import { LoginForm } from "../../components/LoginForm"
 import { StyledContainer } from "./style"
 import { StyledLogo } from "../../styles/typography"

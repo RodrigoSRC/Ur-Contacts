@@ -11,13 +11,7 @@ import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 
 import { StyledParagraph, StyledTitle } from "../../styles/typography";
-
-
-
-interface LoginFormValues {
-    email: string;
-    password: string;
-  }
+import { ILoginFormValues } from "./@types";
 
 
 export const LoginForm = () => {
@@ -28,12 +22,12 @@ export const LoginForm = () => {
         register, 
         handleSubmit, 
         formState: {errors}  
-    } = useForm<LoginFormValues>({
+    } = useForm<ILoginFormValues>({
         resolver: zodResolver(loginFormSchema)
     });
 
 
-    const submit: SubmitHandler<LoginFormValues> = (formData) => {
+    const submit: SubmitHandler<ILoginFormValues> = (formData) => {
         userLogin(formData)
     }
 

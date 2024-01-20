@@ -1,10 +1,10 @@
-import { CardProps } from "./@types";
+import { ICardProps } from "./@types";
 import { Li } from "./styles"
 import { FaTrashAlt } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 
 
-export const ContactCard = ({ contact, editContact, removeContact}: CardProps) => {
+export const ContactCard = ({ contact, editContact, removeContact}: ICardProps) => {
 
     return (
         <Li>
