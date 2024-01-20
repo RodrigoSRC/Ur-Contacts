@@ -16,7 +16,7 @@ export const handlePhone = (e: FormEvent<HTMLInputElement>) => {
     e.currentTarget.maxLength = 15
     let value = e.currentTarget.value
 
-    value = value.replace(/\D/g, '').replace(/(?:(^\+\d{2})?)(?:([1-9]{2})|([0-9]{3})?)(\d{4,5})(\d{4})/, (fullMatch, country, ddd, dddWithZero, prefixTel, suffixTel) => {
+    value = value.replace(/\D/g, '').replace(/(?:(^\+\d{2})?)(?:([1-9]{2})|([0-9]{3})?)(\d{4,5})(\d{4})/, ( country, ddd, dddWithZero, prefixTel, suffixTel) => {
         if (country)
             return `${country} (${
                 ddd || dddWithZero

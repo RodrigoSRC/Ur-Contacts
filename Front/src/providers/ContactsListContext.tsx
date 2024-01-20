@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { api } from "../services/api";
-import { Contact } from "../pages/HomePage";
+import { IContact } from "../pages/HomePage/@types";
 import { toast } from "react-toastify"
 import { ContactProviderProps, ContactsValues, FormData } from "./@types";
 
@@ -9,7 +9,7 @@ import { ContactProviderProps, ContactsValues, FormData } from "./@types";
 export const ContactsListContext = createContext<ContactsValues>({} as ContactsValues);
 
 export const ContactsListProvider = ({ children }:ContactProviderProps) => {
-  const [contacts, setContacts] = useState<Contact[]>([]);
+  const [contacts, setContacts] = useState<IContact[]>([]);
 
   const [isOpenAdd, setIsOpenAdd] = useState(false);
   const [isOpenEdit, setIsOpenEdit] = useState(false);

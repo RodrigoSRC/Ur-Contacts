@@ -1,5 +1,5 @@
 import { LoginData } from "../pages/LoginPage/validator";
-import { Contact } from "../pages/HomePage";
+import { IContact } from "../pages/HomePage/@types";
 
 
 export interface UserProviderProps {
@@ -50,8 +50,8 @@ export interface FormData {
   
   
 export interface ContactsValues {
-    contacts: Contact[];
-    setContacts: React.Dispatch<React.SetStateAction<Contact[]>>;
+    contacts: IContact[];
+    setContacts: React.Dispatch<React.SetStateAction<IContact[]>>;
     addContact: (formData: any) => Promise<void>;
     editContact: (formData: any, contactId: string) => Promise<void>;
     deleteContact: (contactId: string) => Promise<void>;
