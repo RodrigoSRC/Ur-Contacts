@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { ContactModal } from "../ContactModal"
+import { ContactModal } from "../../../"
 import { ContactsListContext } from "../../../../providers/ContactsListContext"
 import { StyledTitle } from "../../../../styles/typography"
 import { Div } from "./style";

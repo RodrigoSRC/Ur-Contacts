@@ -2,9 +2,8 @@ import { SubmitHandler, FieldValues  } from "react-hook-form";
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerFormSchema, handlePhone } from "./schema";
-import { Input } from "../Input";
+import { Input, Button } from "../";
 import { Form } from "./style";
-import { StyledButton } from "../Button/Button";
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
 
@@ -69,7 +68,7 @@ export const RegisterForm = () => {
                 error={errors.telephone as { message: string } | undefined}/>
 
 
-            <StyledButton type="submit">Cadastrar</StyledButton>
+            <Button type="submit">Cadastrar</Button>
         </Form>
     )
 }

@@ -1,11 +1,7 @@
 import styled from "styled-components";
-import { ButtonHTMLAttributes } from "react";
+import { IStyledButtonProps } from "./@types";
 
-interface StyledButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  tp?: "login" | "register";
-}
-
-export const StyledButton = styled.button<StyledButtonProps>`
+export const Container = styled.button<IStyledButtonProps>`
   height: 48px;
   width: 100%;
   background-color: ${({ tp }) =>

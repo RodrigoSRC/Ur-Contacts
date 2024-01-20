@@ -9,6 +9,7 @@ import { RegisterForm } from "./RegisterForm";
 import { UserModal } from "./UserComponents/UserModal";
 import { UserEditModal } from "./UserComponents/UserEditModal";
 import { UserRemoveModal } from "./UserComponents/UserRemoveModal";
+import { Button } from "./Button";
 
 
 export {
@@ -18,9 +19,11 @@ export {
     ContactRemoveModal,
     ContactModal,
     Input,
+    Button,
     LoginForm,
     RegisterForm,
     UserModal,
     UserEditModal,
     UserRemoveModal
+
 }

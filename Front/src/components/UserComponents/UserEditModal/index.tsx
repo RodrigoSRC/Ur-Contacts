@@ -4,9 +4,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { TUserSchema, userSchema, handlePhone } from "./schema"
 import { UserContext } from "../../../providers/UserContext"
 
-import { UserModal } from "../UserModal"
-import { Input } from "../../Input"
-import { StyledButton } from "../../Button/Button";
+import { Input, Button, UserModal} from "../../"
+
 
 import { Form } from "./styles"
 import { StyledTitle } from "../../../styles/typography"
@@ -70,7 +69,7 @@ export const UserEditModal = ({ toggleModal, setIsOpenEditUser, clientId  }: IMo
                 {...register("password")} 
                 error={errors.password as { message: string } | undefined}/> 
 
-              <StyledButton type="submit">Atualizar usuário</StyledButton>
+              <Button type="submit">Atualizar usuário</Button>
           </Form>
       </UserModal>
   )

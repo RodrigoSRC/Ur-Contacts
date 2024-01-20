@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { UserModal } from "../../index"
+import { UserModal } from "../../"
 import { UserContext } from "../../../providers/UserContext"
 import { StyledTitle } from "../../../styles/typography"
 import { Form } from "./style";

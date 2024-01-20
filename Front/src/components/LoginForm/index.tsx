@@ -2,10 +2,9 @@ import { SubmitHandler  } from "react-hook-form";
 import { Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "../Input";
+import { Input, Button } from "../";
 import { loginFormSchema } from "./loginFormSchema";
 import { Form } from "./style";
-import { StyledButton } from "../Button/Button";
 
 import { useContext } from "react";
 import { UserContext } from "../../providers/UserContext";
@@ -50,7 +49,7 @@ export const LoginForm = () => {
                 {...register("password")} 
                 error={errors.password as { message: string } | undefined}/>
 
-            <StyledButton tp="login" type="submit">Entrar</StyledButton>
+            <Button tp="login" type="submit">Entrar</Button>
 
             <StyledParagraph>Ainda não possui uma conta?</StyledParagraph>
 

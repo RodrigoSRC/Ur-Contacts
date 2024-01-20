@@ -2,13 +2,12 @@ import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TContactSchema, contactSchema, handlePhone } from "./schema"
-import { ContactModal } from "../ContactModal"
-import { ContactsListContext } from "../../../../providers/ContactsListContext"
-import { Form } from "./style"
-import { Input } from "../../../Input"
-import { StyledButton } from "../../../Button/Button";
-import { StyledTitle } from "../../../../styles/typography"
 import { IModalEditTaskProps } from "./@types"
+
+import { Form } from "./style"
+import { StyledTitle } from "../../../../styles/typography"
+import { ContactModal, Input, Button } from "../../../"
+import { ContactsListContext } from "../../../../providers/ContactsListContext"
 
 
 
@@ -65,7 +64,7 @@ export const ContactEditModal = ({ toggleModal, setIsOpenEdit, contactId  }: IMo
                 {...register("email")} 
                 error={errors.email as { message: string } | undefined}/>   
 
-              <StyledButton type="submit">Editar contato</StyledButton>
+              <Button type="submit">Editar contato</Button>
           </Form>
       </ContactModal>
   )

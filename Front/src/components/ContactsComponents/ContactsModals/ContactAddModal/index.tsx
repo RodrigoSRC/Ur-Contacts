@@ -1,15 +1,12 @@
 import {  useContext } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-
 import { TContactSchema, contactSchema, handlePhone } from "./schema"
-import { ContactModal } from "../ContactModal"
+
 import { Form } from "./style"
+import { Input, Button, ContactModal } from "../../.."
 import { ContactsListContext } from "../../../../providers/ContactsListContext"
-import { Input } from "../../../Input"
-import { StyledButton } from "../../../Button/Button"
 import { StyledTitle } from "../../../../styles/typography"
-import 'jquery-mask-plugin';
 import { IModalAddTaskProps } from "./@types"
 
 
@@ -58,7 +55,7 @@ export const ContactAddModal = ({ toggleModal, setIsOpenAdd }: IModalAddTaskProp
                 {...register("email")} 
                 error={errors.email as { message: string } | undefined}/>      
 
-              <StyledButton type="submit">Registrar contato</StyledButton>
+              <Button type="submit">Registrar contato</Button>
           </Form>
       </ContactModal>
   )
