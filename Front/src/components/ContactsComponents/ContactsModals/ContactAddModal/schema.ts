@@ -24,7 +24,7 @@ export const handlePhone = (e: FormEvent<HTMLInputElement>) => {
         if (ddd || dddWithZero)
             return `(${ddd || dddWithZero}) ${prefixTel}-${suffixTel}`;
         if (prefixTel && suffixTel) return `${prefixTel}-${suffixTel}`;
-        return value;
+        return fullMatch;
     })
 
     e.currentTarget.value = value
