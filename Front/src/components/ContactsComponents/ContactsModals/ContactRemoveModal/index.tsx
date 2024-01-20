@@ -1,17 +1,13 @@
-import { Dispatch, SetStateAction, useContext } from "react"
-import { Modal } from "../Modal"
+import { useContext } from "react"
+import { ContactModal } from "../ContactModal"
 import { ContactsListContext } from "../../../../providers/ContactsListContext"
 import { StyledTitle } from "../../../../styles/typography"
 import { Div } from "./style";
-
-interface ModalEditTaskProps {
-    toggleModal: () => void;
-    setIsOpenRemove: Dispatch<SetStateAction<boolean>>;
-    contactId: string;
-  }
+import { IModalRemoveTaskProps } from "./@types";
 
 
-export const RemoveContactModal = ({ toggleModal, setIsOpenRemove, contactId  }: ModalEditTaskProps) => {
+
+export const ContactRemoveModal = ({ toggleModal, setIsOpenRemove, contactId  }: IModalRemoveTaskProps) => {
   const { deleteContact } = useContext(ContactsListContext)
 
 
@@ -26,7 +22,7 @@ export const RemoveContactModal = ({ toggleModal, setIsOpenRemove, contactId  }:
 
 
   return (
-      <Modal toggleModal={toggleModal}>
+      <ContactModal toggleModal={toggleModal}>
         <Div>
 
           <StyledTitle>Deseja mesmo excluir esse contato?</StyledTitle>
@@ -35,6 +31,6 @@ export const RemoveContactModal = ({ toggleModal, setIsOpenRemove, contactId  }:
         </Div>
 
 
-      </Modal>
+      </ContactModal>
   )
 }

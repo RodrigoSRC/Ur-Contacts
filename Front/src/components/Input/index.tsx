@@ -1,5 +1,5 @@
 import { forwardRef, HTMLProps} from "react"
-import { StyledParagraph } from "../../../styles/typography"
+import { StyledParagraph } from "../../styles/typography"
 import { Container }from "./style";
 
 interface InputProps extends HTMLProps<HTMLInputElement> {

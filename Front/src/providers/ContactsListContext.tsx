@@ -1,34 +1,9 @@
-import React, { createContext, useState, useEffect, useContext } from "react";
+import { createContext, useState, useEffect } from "react";
 import { api } from "../services/api";
 import { Contact } from "../pages/HomePage";
 import { toast } from "react-toastify"
-import { UserContext } from "./UserContext";
+import { ContactProviderProps, ContactsValues, FormData } from "./@types";
 
-interface FormData {
-  name: string;
-  telephone: string;
-  email: string;
-}
-
-
-interface ContactsValues {
-  contacts: Contact[];
-  setContacts: React.Dispatch<React.SetStateAction<Contact[]>>;
-  addContact: (formData: any) => Promise<void>;
-  editContact: (formData: any, contactId: string) => Promise<void>;
-  deleteContact: (contactId: string) => Promise<void>;
-  isOpenAdd: boolean;
-  setIsOpenAdd: React.Dispatch<React.SetStateAction<boolean>>;
-  isOpenEdit: boolean;
-  setIsOpenEdit: React.Dispatch<React.SetStateAction<boolean>>;
-  isOpenRemove: boolean; 
-  setIsOpenRemove: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-
-interface ContactProviderProps {
-  children: React.ReactNode
-}
 
 
 export const ContactsListContext = createContext<ContactsValues>({} as ContactsValues);

@@ -1,24 +1,20 @@
-import { Dispatch, SetStateAction, useContext, useEffect } from "react"
+import {  useContext } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { TContactSchema, contactSchema } from "./schema"
-import { Modal } from "../Modal"
+
+import { TContactSchema, contactSchema, handlePhone } from "./schema"
+import { ContactModal } from "../ContactModal"
 import { Form } from "./style"
 import { ContactsListContext } from "../../../../providers/ContactsListContext"
-import { Input } from "../../../RegisterForm/Input"
+import { Input } from "../../../Input"
 import { StyledButton } from "../../../Button/Button"
 import { StyledTitle } from "../../../../styles/typography"
 import 'jquery-mask-plugin';
-import { handlePhone } from "./schema"
+import { IModalAddTaskProps } from "./@types"
 
 
-interface ModalAddTaskProps {
-  toggleModal: () => void
-  setIsOpenAdd: Dispatch<SetStateAction<boolean>>
-}
 
-
-export const AddContactModal = ({ toggleModal, setIsOpenAdd }: ModalAddTaskProps) => {
+export const ContactAddModal = ({ toggleModal, setIsOpenAdd }: IModalAddTaskProps) => {
   const { register, handleSubmit, formState: {errors}   } = useForm<TContactSchema>({
       resolver: zodResolver(contactSchema), mode: "onChange"
   })
@@ -31,7 +27,7 @@ export const AddContactModal = ({ toggleModal, setIsOpenAdd }: ModalAddTaskProps
 
 
   return (
-      <Modal toggleModal={toggleModal}>
+      <ContactModal toggleModal={toggleModal}>
 
           <Form onSubmit={handleSubmit(createContact)}>
               <StyledTitle>Adicione novo contato</StyledTitle>
@@ -64,6 +60,6 @@ export const AddContactModal = ({ toggleModal, setIsOpenAdd }: ModalAddTaskProps
 
               <StyledButton type="submit">Registrar contato</StyledButton>
           </Form>
-      </Modal>
+      </ContactModal>
   )
 }

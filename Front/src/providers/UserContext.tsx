@@ -1,49 +1,10 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { LoginData } from "../pages/LoginPage/validator";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { UserProviderProps, UserContextValues, RegisterFormData, EditFormData, User } from "./@types";
 
-
-interface UserProviderProps {
-    children: ReactNode
-}
-
-interface UserContextValues {
-  user: any;
-  setUser: React.Dispatch<React.SetStateAction<any>>;
-  userLogin: (data: LoginData) => void;
-  userLogout: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-  loading: boolean;
-  isOpenEditUser: boolean;
-  setIsOpenEditUser: React.Dispatch<React.SetStateAction<boolean>>;
-  isOpenRemoveUser: boolean;
-  setIsOpenRemoveUser: React.Dispatch<React.SetStateAction<boolean>>;
-  userRegister: (formData: any) => void;
-  deleteUser: (userId: string) => void;
-  editUser: (formData: any, userId: string) => void;
-}
-
-
-interface RegisterFormData {
-  name: string;
-  email: string;
-}
-
-interface EditFormData {
-  name: string;
-  email: string;
-  password: string;
-  telephone: string;
-}
-
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  telephone: string;
-}
 
 
 export const UserContext = createContext<UserContextValues>({} as UserContextValues)

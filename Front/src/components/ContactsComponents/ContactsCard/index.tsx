@@ -1,20 +1,13 @@
-import { Contact } from "../../../../pages/HomePage"
-import { Container } from "./styles"
+import { CardProps } from "./@types";
+import { Li } from "./styles"
 import { FaTrashAlt } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
 
 
-
-interface CardProps {
-    contact: Contact
-    editContact: (id: string) => void;
-    removeContact: (id: string) => void;
-}
-
-export const Card = ({ contact, editContact, removeContact}: CardProps) => {
+export const ContactCard = ({ contact, editContact, removeContact}: CardProps) => {
 
     return (
-        <Container>
+        <Li>
             <div className="infos">
                 <h3 className="nome">{contact.name}</h3>
                 <div className="contacts">
@@ -31,7 +24,7 @@ export const Card = ({ contact, editContact, removeContact}: CardProps) => {
                 <FaTrashAlt style={{ width: '20px', height: '20px', cursor: 'pointer'}} onClick={() => removeContact(contact.id)} />
             </div>
             
-        </Container>
+        </Li>
     )
 
 }

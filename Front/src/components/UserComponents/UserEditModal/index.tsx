@@ -1,23 +1,21 @@
-import { Dispatch, SetStateAction, useContext } from "react"
+import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { TUserSchema, userSchema, handlePhone } from "./schema"
-import { Modal } from "../Modal"
-import { UserContext } from "../../../../providers/UserContext"
+import { UserContext } from "../../../providers/UserContext"
+
+import { UserModal } from "../UserModal"
+import { Input } from "../../Input"
+import { StyledButton } from "../../Button/Button";
+
 import { Form } from "./styles"
-import { Input } from "../../../RegisterForm/Input"
-import { StyledButton } from "../../../Button/Button";
-import { StyledTitle } from "../../../../styles/typography"
+import { StyledTitle } from "../../../styles/typography"
+
+import { IModalEditTaskProps } from "./@types"
 
 
-interface ModalEditTaskProps {
-    toggleModal: () => void;
-    setIsOpenEditUser: Dispatch<SetStateAction<boolean>>;
-    clientId: string;
-  }
 
-
-export const UserEditModal = ({ toggleModal, setIsOpenEditUser, clientId  }: ModalEditTaskProps) => {
+export const UserEditModal = ({ toggleModal, setIsOpenEditUser, clientId  }: IModalEditTaskProps) => {
   const { register, handleSubmit, formState: {errors}   } = useForm<TUserSchema>({
     resolver: zodResolver(userSchema)
 })
@@ -35,12 +33,10 @@ export const UserEditModal = ({ toggleModal, setIsOpenEditUser, clientId  }: Mod
 
 
   return (
-      <Modal toggleModal={toggleModal}>
-
+      <UserModal toggleModal={toggleModal}>
           <Form onSubmit={handleSubmit(onSubmit)}>
-
-          <StyledTitle>Edite seu usuário</StyledTitle>
-          <Input 
+              <StyledTitle>Edite seu usuário</StyledTitle>
+              <Input 
                 title="Nome" 
                 type="text" 
                 defaultValue={user.name}
@@ -76,8 +72,6 @@ export const UserEditModal = ({ toggleModal, setIsOpenEditUser, clientId  }: Mod
 
               <StyledButton type="submit">Atualizar usuário</StyledButton>
           </Form>
-
-
-      </Modal>
+      </UserModal>
   )
 }

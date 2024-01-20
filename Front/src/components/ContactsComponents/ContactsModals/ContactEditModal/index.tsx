@@ -1,24 +1,18 @@
-import { Dispatch, SetStateAction, useContext } from "react"
+import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { TContactSchema, contactSchema } from "./schema"
-import { Modal } from "../Modal"
+import { TContactSchema, contactSchema, handlePhone } from "./schema"
+import { ContactModal } from "../ContactModal"
 import { ContactsListContext } from "../../../../providers/ContactsListContext"
 import { Form } from "./style"
-import { Input } from "../../../RegisterForm/Input"
+import { Input } from "../../../Input"
 import { StyledButton } from "../../../Button/Button";
 import { StyledTitle } from "../../../../styles/typography"
-import { handlePhone } from "./schema"
+import { IModalEditTaskProps } from "./@types"
 
 
-interface ModalEditTaskProps {
-    toggleModal: () => void;
-    setIsOpenEdit: Dispatch<SetStateAction<boolean>>;
-    contactId: string;
-  }
 
-
-export const EditContactModal = ({ toggleModal, setIsOpenEdit, contactId  }: ModalEditTaskProps) => {
+export const ContactEditModal = ({ toggleModal, setIsOpenEdit, contactId  }: IModalEditTaskProps) => {
   const { register, handleSubmit, formState: {errors}   } = useForm<TContactSchema>({
     resolver: zodResolver(contactSchema)
 })
@@ -39,7 +33,7 @@ export const EditContactModal = ({ toggleModal, setIsOpenEdit, contactId  }: Mod
 
 
   return (
-      <Modal toggleModal={toggleModal}>
+      <ContactModal toggleModal={toggleModal}>
 
           <Form onSubmit={handleSubmit(onSubmit)}>
 
@@ -73,6 +67,6 @@ export const EditContactModal = ({ toggleModal, setIsOpenEdit, contactId  }: Mod
 
               <StyledButton type="submit">Editar contato</StyledButton>
           </Form>
-      </Modal>
+      </ContactModal>
   )
 }

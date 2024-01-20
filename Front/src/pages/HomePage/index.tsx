@@ -1,31 +1,20 @@
-import { StyledTitle } from "../../styles/typography"
-import { StyledContainer } from "./style"
-import { Card } from "../../components/ContactsComponents/ContactsList/ContactCard";
-import { AddContactModal } from "../../components/ContactsComponents/ContactsModals/ContactAddModal";
-import { EditContactModal } from "../../components/ContactsComponents/ContactsModals/ContactEditModal";
-import { RemoveContactModal } from "../../components/ContactsComponents/ContactsModals/RemoveModal";
-import { UserEditModal } from "../../components/UserComponents/UserModals/UserEditModal";
-import { RemoveUserModal } from "../../components/UserComponents/UserModals/UserRemoveModal";
-
 import { Link } from "react-router-dom";
 import { api } from "../../services/api";
 import { useContext, useEffect, useState } from "react";
 
+import { StyledTitle, StyledLogo } from "../../styles/typography"
+import { StyledContainer } from "./style"
+
+import { ContactAddModal, ContactEditModal, ContactRemoveModal, UserEditModal, UserRemoveModal, ContactCard } from "../../components";
+
 import { UserContext } from "../../providers/UserContext";
 import { ContactsListContext } from "../../providers/ContactsListContext";
-import { FaPlusCircle } from "react-icons/fa";
+
+import { FaPlusCircle, FaTrashAlt } from "react-icons/fa";
 import { MdEdit } from "react-icons/md";
-import { FaTrashAlt } from "react-icons/fa";
-
-import { StyledLogo } from "../../styles/typography";
+import { IContact } from "./@types";
 
 
-export interface Contact {
-    id: string
-    name: string
-    telephone: string
-    email: string
-}
 
 
 export const HomePage = () => {
@@ -54,17 +43,17 @@ export const HomePage = () => {
     const toggleModalRemoveUser = () => setIsOpenRemoveUser(!isOpenRemoveUser)
 
 
-    const handleEditContact = (contact: Contact) => {
+    const handleEditContact = (contact: IContact) => {
         setEditingContactId(contact.id);
         toggleModalEdit();
       };
-    const handleRemoveContact = (contact: Contact) => {
+    const handleRemoveContact = (contact: IContact) => {
         setRemovingContactId(contact.id);
         toggleModalRemove();
       };
 
 
-    const renderContacts = (contactsToRender: Contact[]) => contactsToRender.map(contact => <Card key={contact.id} contact={contact} 
+    const renderContacts = (contactsToRender: IContact[]) => contactsToRender.map(contact => <ContactCard key={contact.id} contact={contact} 
         editContact={() => handleEditContact(contact)} removeContact={() => handleRemoveContact(contact)
         }/>)
 
@@ -104,22 +93,22 @@ export const HomePage = () => {
                 </div>
 
 
-                {isOpenAdd && <AddContactModal toggleModal={toggleModalAdd} setIsOpenAdd={setIsOpenAdd} />}
+                {isOpenAdd && <ContactAddModal toggleModal={toggleModalAdd} setIsOpenAdd={setIsOpenAdd} />}
 
                 {isOpenEdit && (
-                <EditContactModal
+                <ContactEditModal
                     toggleModal={toggleModalEdit}
                     setIsOpenEdit={setIsOpenEdit}
                     contactId={editingContactId || ''}
                 />
                 )}
                 {
-                isOpenRemove && <RemoveContactModal toggleModal={toggleModalRemove} setIsOpenRemove={setIsOpenRemove} contactId={removingContactId || ''} />
+                isOpenRemove && <ContactRemoveModal toggleModal={toggleModalRemove} setIsOpenRemove={setIsOpenRemove} contactId={removingContactId || ''} />
                 }
 
                 {isOpenEditUser && <UserEditModal toggleModal={toggleModalEditUser} setIsOpenEditUser={setIsOpenEditUser} clientId={user.id || ''}/>}
 
-                {isOpenRemoveUser && <RemoveUserModal toggleModal={toggleModalRemoveUser} setIsOpenRemoveUser={setIsOpenRemoveUser} clientId={user.id || ''}/>}
+                {isOpenRemoveUser && <UserRemoveModal toggleModal={toggleModalRemoveUser} setIsOpenRemoveUser={setIsOpenRemoveUser} clientId={user.id || ''}/>}
 
             </div>
         </StyledContainer>

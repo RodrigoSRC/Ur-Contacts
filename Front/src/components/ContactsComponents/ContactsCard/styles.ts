@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Container = styled.li`
+export const Li = styled.li`
     display: flex;
     justify-content: space-between;
     

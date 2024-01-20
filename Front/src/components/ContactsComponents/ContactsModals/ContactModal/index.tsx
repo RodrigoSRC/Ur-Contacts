@@ -1,14 +1,10 @@
-import { ReactNode, useEffect, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { Container } from "./styles"
 import { createPortal } from "react-dom"
+import { IModalProps } from "./@types"
 
-interface ModalProps {
-    toggleModal: () => void
-    blockClosing?: boolean
-    children: ReactNode
-}
 
-export const Modal = ({ toggleModal, children, blockClosing }: ModalProps) => {
+export const ContactModal = ({ toggleModal, children, blockClosing }: IModalProps) => {
     const ref = useRef<HTMLDivElement>(null)
 
     useEffect(() => {

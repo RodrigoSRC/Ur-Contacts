@@ -1,18 +1,11 @@
-import { Dispatch, SetStateAction, useContext } from "react"
-import { Modal } from "../Modal"
-import { UserContext } from "../../../../providers/UserContext"
-import { StyledTitle } from "../../../../styles/typography"
+import { useContext } from "react"
+import { UserModal } from "../../index"
+import { UserContext } from "../../../providers/UserContext"
+import { StyledTitle } from "../../../styles/typography"
 import { Form } from "./style";
+import { IModalEditTaskProps } from "./@types";
 
-
-interface ModalEditTaskProps {
-    toggleModal: () => void;
-    setIsOpenRemoveUser: Dispatch<SetStateAction<boolean>>;
-    clientId: string;
-  }
-
-
-export const RemoveUserModal = ({ toggleModal, setIsOpenRemoveUser, clientId  }: ModalEditTaskProps) => {
+export const UserRemoveModal = ({ toggleModal, setIsOpenRemoveUser, clientId  }: IModalEditTaskProps) => {
   const { deleteUser } = useContext(UserContext)
 
 
@@ -27,7 +20,7 @@ export const RemoveUserModal = ({ toggleModal, setIsOpenRemoveUser, clientId  }:
 
 
   return (
-      <Modal toggleModal={toggleModal}>
+      <UserModal toggleModal={toggleModal}>
         <Form>
           <StyledTitle>Deseja mesmo excluir seu usuário?</StyledTitle>
           <button onClick={() => onSubmit()}>Sim</button>
@@ -36,6 +29,6 @@ export const RemoveUserModal = ({ toggleModal, setIsOpenRemoveUser, clientId  }:
         </Form>
 
 
-      </Modal>
+      </UserModal>
   )
 }
