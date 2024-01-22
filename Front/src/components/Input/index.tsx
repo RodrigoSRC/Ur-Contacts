@@ -12,7 +12,7 @@ export const Input = forwardRef<HTMLInputElement, IInputProps>(({error, title, .
             >{title}</StyledParagraph>
             
             <input ref={ref} {...rest}/>
-            {error ? <p className="errorMessage">{error.message}</p> : null}
+            <StyledParagraph className="errorMessage">{error?.message}</StyledParagraph>
         </Container>
 
     )

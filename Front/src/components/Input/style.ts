@@ -15,7 +15,7 @@ export const Container = styled.div`
     color: var(--grey-0);
     background-color: var(--grey-2);
 
-    border-radius: var(--border-radious);
+    border-radius: var(--border-radius);
 
     
 }

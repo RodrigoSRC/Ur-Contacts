@@ -4,11 +4,11 @@ import { FormEvent } from "react"
 export const registerFormSchema = z.object({
     name: z
         .string()
-        .nonempty("Insira o nome do usuário."),
+        .min(2, "Insira o nome do usuário."),
 
     email: z
         .string()
-        .nonempty("Insira o email.")
+        .min(10, "Insira o email.")
         .email("Digite um email válido."),
 
     password: z
@@ -20,9 +20,9 @@ export const registerFormSchema = z.object({
         .regex(/(?=.*?[#?!@$%^&*-])/, "A senha deve conter pelo menos um caractere especial.")
         .regex(/(?=.*?[0-9])/, "A senha deve conter pelo menos um número."),
 
-    confirm: z.string().nonempty("Confirme sua senha."),
+    confirm: z.string().min(1, "Confirme sua senha."),
 
-    telephone: z.string().nonempty("Informe seu contato"),
+    telephone: z.string().min(14, "Informe seu contato").max(15, "No máximo 11 digitos"),
 
 }).refine(({password, confirm}) => password === confirm, {
     message: "As senhas não correspondem.",
@@ -30,11 +30,13 @@ export const registerFormSchema = z.object({
 })
 
 
+
+
 export const handlePhone = (e: FormEvent<HTMLInputElement>) => {
     e.currentTarget.maxLength = 15
     let value = e.currentTarget.value
 
-    value = value.replace(/\D/g, '').replace(/(?:(^\+\d{2})?)(?:([1-9]{2})|([0-9]{3})?)(\d{4,5})(\d{4})/, ( country, ddd, dddWithZero, prefixTel, suffixTel) => {
+    value = value.replace(/\D/g, '').replace(/(?:(^\+\d{2})?)(?:([1-9]{2})|([0-9]{3})?)(\d{4,5})(\d{4})/, (fullMatch, country, ddd, dddWithZero, prefixTel, suffixTel) => {
         if (country)
             return `${country} (${
                 ddd || dddWithZero
@@ -42,7 +44,7 @@ export const handlePhone = (e: FormEvent<HTMLInputElement>) => {
         if (ddd || dddWithZero)
             return `(${ddd || dddWithZero}) ${prefixTel}-${suffixTel}`;
         if (prefixTel && suffixTel) return `${prefixTel}-${suffixTel}`;
-        return value;
+        return fullMatch;
     })
 
     e.currentTarget.value = value

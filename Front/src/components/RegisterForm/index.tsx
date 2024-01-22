@@ -38,7 +38,7 @@ export const RegisterForm = () => {
 
             <Input 
                 title="Email" 
-                type="email" 
+                type="text" 
                 placeholder="Digite aqui seu email" 
                 {...register("email")} 
                 error={errors.email as { message: string } | undefined}/>
@@ -55,7 +55,7 @@ export const RegisterForm = () => {
                 type="password" 
                 placeholder="Digite novamente sua senha" 
                 {...register("confirm")} 
-                error={errors.name as { message: string } | undefined}/>
+                error={errors.confirm as { message: string } | undefined}/>
 
             <Input 
                 title="Contato" 

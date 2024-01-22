@@ -37,7 +37,7 @@ export const LoginForm = () => {
 
             <Input 
                 title="Email" 
-                type="email" 
+                type="text"
                 placeholder="Digite aqui seu email" 
                 {...register("email")} 
                 error={errors.email as { message: string } | undefined}/>

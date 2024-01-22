@@ -47,6 +47,6 @@ export const StyledContainer = styled.div`
         align-items: center;
         justify-content: center;
 
-        border-radius: var(--border-radious);
+        border-radius: var(--border-radius);
     }
 `

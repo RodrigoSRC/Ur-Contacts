@@ -83,7 +83,7 @@ export const HomePage = () => {
                     <section>
                         <StyledTitle>Atualmente <span>{contacts.length}</span> contatos</StyledTitle>
 
-                        <FaPlusCircle style={{ width: '20px', height: '20px', cursor: 'pointer'}} type="button" onClick={toggleModalAdd}/>
+                        <FaPlusCircle style={{ width: '23px', height: '23px', cursor: 'pointer'}} type="button" onClick={toggleModalAdd}/>
 
                     </section>
                 <ul>

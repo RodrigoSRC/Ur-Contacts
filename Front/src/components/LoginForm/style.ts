@@ -4,12 +4,13 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 12px;
   padding: 20px;
   height: 500px;
   width: 370px;
   background-color: var(--grey-3);
   color: var(--grey-0);
+  border-radius: var(--border-radius);
 
   h1 {
     margin: 15px;

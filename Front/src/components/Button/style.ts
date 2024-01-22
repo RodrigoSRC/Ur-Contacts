@@ -9,6 +9,8 @@ export const Container = styled.button<IStyledButtonProps>`
   border-radius: var(--border-radius);
   color: var(--grey-0);
 
+  font-size: 16px;
+
   &:hover {
     background-color: var(--color-primary-focus);
   }

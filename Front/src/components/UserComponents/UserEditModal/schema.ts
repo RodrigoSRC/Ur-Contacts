@@ -2,11 +2,27 @@ import { z } from "zod"
 import { FormEvent } from "react"
 
 export const userSchema = z.object({
-    name: z.string(),
-    email: z.string(),
-    telephone: z.string()
-    .max(15, "Necessário no máximo 11 digitos").min(10, "Necessário no mínimo 10 digitos"),
-    password: z.string()
+    name: z
+        .string()
+        .min(2, "Insira o nome do usuário."),
+
+    email: z
+        .string()
+        .min(10, "Insira o email.")
+        .email("Digite um email válido."),
+    telephone: z
+        .string()
+        .max(15, "No máximo 11 digitos")
+        .min(13, "No mínimo 10 digitos"),
+
+    password: z
+        .string()
+        .nonempty("Insira uma senha.")
+        .min(8, "A senha precisa conter pelo menos 8 caracteres.")
+        .regex(/(?=.*?[A-Z])/, "A senha deve conter pelo menos uma letra maiúscula.")
+        .regex(/(?=.*?[a-z])/, "A senha deve conter pelo menos uma letra minuscula.")
+        .regex(/(?=.*?[#?!@$%^&*-])/, "A senha deve conter pelo menos um caractere especial.")
+        .regex(/(?=.*?[0-9])/, "A senha deve conter pelo menos um número.")
 })
 
 export type TUserSchema = z.infer<typeof userSchema>

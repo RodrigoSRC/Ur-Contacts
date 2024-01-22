@@ -13,7 +13,7 @@ import { IModalAddTaskProps } from "./@types"
 
 export const ContactAddModal = ({ toggleModal, setIsOpenAdd }: IModalAddTaskProps) => {
   const { register, handleSubmit, formState: {errors}   } = useForm<TContactSchema>({
-      resolver: zodResolver(contactSchema), mode: "onChange"
+      resolver: zodResolver(contactSchema)
   })
   const { addContact } = useContext(ContactsListContext)
 
@@ -50,7 +50,7 @@ export const ContactAddModal = ({ toggleModal, setIsOpenAdd }: IModalAddTaskProp
 
               <Input 
                 title="Email" 
-                type="email" 
+                type="text" 
                 placeholder="Digite aqui o email" 
                 {...register("email")} 
                 error={errors.email as { message: string } | undefined}/>      

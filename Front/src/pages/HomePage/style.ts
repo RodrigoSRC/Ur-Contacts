@@ -43,13 +43,13 @@ export const StyledContainer = styled.main`
         align-items: center;
         justify-content: center;
 
-        height: 30px;
+        height: 40px;
         width: 55px;
 
         background-color: var(--grey-3);
         color: var(--grey-0);
 
-        border-radius: var(--border-radious);
+        border-radius: var(--border-radius);
     }
 
     .headerSection{

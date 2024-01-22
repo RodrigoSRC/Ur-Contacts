@@ -2,10 +2,12 @@ import { FormEvent } from "react"
 import { z } from "zod"
 
 export const contactSchema = z.object({
-    name: z.string(),
-    email: z.string(),
+    name: z
+        .string()
+        .min(2, "Insira o nome do contato."),
+    email: z.string().email("Digite um email válido."),
     telephone: z.string()
-    .max(15, "Necessário no máximo 10 digitos").min(10, "Necessário no mínimo 10 digitos")
+    .max(15, "No máximo 11 digitos").min(14, "No mínimo 10 digitos")
 })
 
 export type TContactSchema = z.infer<typeof contactSchema>

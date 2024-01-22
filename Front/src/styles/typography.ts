@@ -24,7 +24,8 @@ export const StyledTitle = styled.h1<{ fontWeight?: string }>`
 
 export const StyledParagraph = styled.p<{ fontWeight?: string; fontItalic?: string }>`
   ${HeadlineStyles};
-  font-size: 12px;
+  height: 14px;
+  font-size: 14px;
 `;
 
 

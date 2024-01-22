@@ -58,7 +58,7 @@ export const ContactEditModal = ({ toggleModal, setIsOpenEdit, contactId  }: IMo
 
               <Input 
                 title="Email" 
-                type="email" 
+                type="text" 
                 defaultValue={currentContact!.email}
                 placeholder="Digite aqui o email" 
                 {...register("email")} 

@@ -15,6 +15,6 @@ export const GlobalStyles = createGlobalStyle`
         --success: #3FE864;
         --negative: #E83F5B;
 
-        --border-radious: 4px;
+        --border-radius: 4px;
     }
 `
